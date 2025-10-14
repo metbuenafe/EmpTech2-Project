@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Customers</title></head>
+<body>
+  <h1>Customers</h1>
+  <form method="post">
+    <input name="name" placeholder="Name" required>
+    <input name="phone" placeholder="Phone" required>
+    <input name="address" placeholder="Address" required>
+    <button type="submit">Add Customer</button>
+  </form>
+  <table border="1">
+    <tr><th>Name</th><th>Phone</th><th>Address</th></tr>
+    {% for c in customers %}
+    <tr>
+      <td>{{ c['name'] }}</td>
+      <td>{{ c['phone'] }}</td>
+      <td>{{ c['address'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>

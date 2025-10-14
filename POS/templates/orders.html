@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head><title>Orders</title></head>
+<body>
+  <h1>Orders</h1>
+  <form method="post">
+    <label>Customer:</label>
+    <select name="customer_id" required>
+      {% for c in customers %}
+      <option value="{{ c['id'] }}">{{ c['name'] }}</option>
+      {% endfor %}
+    </select><br>
+    <label>Items:</label><br>
+    {% for p in products %}
+      {{ p['name'] }} ({{ p['size'] }}) <input type="number" min="0" name="qty_{{ p['id'] }}" value="0"><br>
+    {% endfor %}
+    <button type="submit">Place Order</button>
+  </form>
+  <table border="1">
+    <tr><th>Order ID</th><th>Customer ID</th><th>Date</th><th>Status</th></tr>
+    {% for o in orders %}
+    <tr>
+      <td>{{ o['id'] }}</td>
+      <td>{{ o['customer_id'] }}</td>
+      <td>{{ o['order_date'] }}</td>
+      <td>{{ o['status'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>

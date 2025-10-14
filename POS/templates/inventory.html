@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Inventory</title></head>
+<body>
+  <h1>Inventory</h1>
+  <table border="1">
+    <tr><th>Name</th><th>Size</th><th>Price</th></tr>
+    {% for p in products %}
+    <tr>
+      <td>{{ p['name'] }}</td>
+      <td>{{ p['size'] }}</td>
+      <td>{{ p['price'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>

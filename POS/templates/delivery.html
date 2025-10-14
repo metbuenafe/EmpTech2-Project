@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Delivery</title></head>
+<body>
+  <h1>Deliveries</h1>
+  <form method="post">
+    <label>Order ID:</label>
+    <select name="order_id">
+      {% for o in orders %}
+      <option value="{{ o['id'] }}">{{ o['id'] }}</option>
+      {% endfor %}
+    </select>
+    <input name="delivery_person" placeholder="Delivery Person" required>
+    <button type="submit">Assign</button>
+  </form>
+  <table border="1">
+    <tr><th>Order ID</th><th>Delivery Person</th><th>Status</th><th>Delivered At</th></tr>
+    {% for d in deliveries %}
+    <tr>
+      <td>{{ d['order_id'] }}</td>
+      <td>{{ d['delivery_person'] }}</td>
+      <td>{{ d['status'] }}</td>
+      <td>{{ d['delivered_at'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>
